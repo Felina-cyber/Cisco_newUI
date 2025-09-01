@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0a0a;
+}
+
+html, body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  @apply bg-gray-50 text-gray-900 antialiased;
+}
+
+/* subtle gradient header */
+.header-gradient {
+  background: radial-gradient(80% 140% at 20% 0%, rgba(11,92,171,0.18) 0%, rgba(11,92,171,0) 60%),
+              linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+.shadow-ring {
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06);
+}
+.card {
+  @apply bg-white rounded-2xl shadow-soft shadow-ring;
+}
+.pill {
+  @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium;
+}
+.pill-blue { @apply bg-blue-50 text-blue-700; }
+.pill-green { @apply bg-green-50 text-green-700; }
+.pill-yellow { @apply bg-yellow-50 text-yellow-800; }
+.pill-red { @apply bg-rose-50 text-rose-700; }
+
+.bubble {
+  @apply bg-white shadow-soft rounded-2xl px-4 py-3;
+}
+.bubble.ai {
+  @apply bg-gradient-to-br from-gray-50 to-white;
+}
+.btn {
+  @apply inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold transition hover:opacity-90;
+}
+.btn-primary {
+  @apply bg-brand-600 text-white;
+}
+.btn-ghost {
+  @apply bg-white border border-gray-200 text-gray-900;
+}
+.btn-danger {
+  @apply bg-rose-600 text-white;
+}
