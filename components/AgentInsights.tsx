@@ -57,9 +57,7 @@ export default function AgentInsights({
             currentStep={timelineStep}
             agentName={
               ["agent-selection", "sent"].includes(timelineStep)
-                ? (data as any).followUp && (data as any).followUp.isNew 
-                  ? (data as any).followUp.agent 
-                  : data.agent
+                ? ((data as any).followUp?.isNew ? (data as any).followUp.agent : data.agent)
                 : "Finding Agent"
             }
             onStepClick={onTimelineStepClick}
@@ -100,24 +98,20 @@ export default function AgentInsights({
               </h3>
             </div>
 
-            {timelineStep === "agent-selection" && (
+            {timelineStep === "sent" || timelineStep === "agent-selection" && (
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
                   <p className="text-xs font-medium text-gray-500">
                     Selected Agent
                   </p>
                   <p className="text-sm font-semibold text-gray-800">
-                    {(data as any).followUp && (data as any).followUp.isNew 
-                      ? (data as any).followUp.agent 
-                      : data.agent}
+                    {(data as any).followUp?.isNew ? (data as any).followUp.agent : data.agent}
                   </p>
                 </div>
                 <div>
                   <p className="text-xs font-medium text-gray-500">Confidence</p>
                   <p className="text-sm font-semibold text-gray-800">
-                    {Math.round(((data as any).followUp && (data as any).followUp.isNew 
-                      ? (data as any).followUp.confidence 
-                      : data.confidence) * 100)}%
+                    {Math.round(((data as any).followUp?.isNew ? (data as any).followUp.confidence : data.confidence) * 100)}%
                   </p>
                 </div>
               </div>
@@ -149,7 +143,7 @@ export default function AgentInsights({
                 <span className="text-gray-700">
                   Best sub-agent selected:{" "}
                   {["agent-selection", "sent"].includes(timelineStep)
-                    ? (data as any).followUp && (data as any).followUp.isNew 
+                    ? (data as any).followUp?.isNew 
                       ? (data as any).followUp.agent 
                       : data.agent
                     : "Finding agent..."}
@@ -166,20 +160,16 @@ export default function AgentInsights({
           <div className="rounded-2xl border border-gray-200 bg-gradient-to-r from-cisco-sky/10 to-cisco-blue/5 shadow-md p-5">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-12 grid place-items-center rounded-2xl bg-gradient-to-r from-cisco-navy to-cisco-blue text-white shadow-md">
-                <AgentIcon name={(data as any).followUp && (data as any).followUp.isNew 
-                  ? (data as any).followUp.agent 
-                  : data.agent} />
+                <AgentIcon name={(data as any).followUp?.isNew ? (data as any).followUp.agent : data.agent} />
               </div>
               <div>
                 <h3 className="text-base font-bold text-cisco-navy">
-                  {(data as any).followUp && (data as any).followUp.isNew 
-                    ? (data as any).followUp.agent 
-                    : data.agent}
+                  {(data as any).followUp?.isNew ? (data as any).followUp.agent : data.agent}
                 </h3>
                 <div className="flex items-center gap-1 mt-1">
                   <Target className="h-4 w-4 text-cisco-blue" />
                   <span className="text-xs font-medium text-cisco-blue">
-                    {Math.round(data.confidence * 100)}% confidence
+                    {Math.round(((data as any).followUp?.isNew ? (data as any).followUp.confidence : data.confidence) * 100)}% confidence
                   </span>
                 </div>
               </div>
@@ -189,7 +179,7 @@ export default function AgentInsights({
 <div className="space-y-3 mb-4">
   <h4 className="text-sm font-bold text-gray-700">Source Analysis</h4>
   <div className="space-y-2">
-    {data.sourceAnalysis.map((src, idx) => (
+    {(((data as any).followUp?.isNew ? (data as any).followUp.sourceAnalysis : data.sourceAnalysis) || []).map((src: any, idx: number) => (
       <div key={idx} className="flex items-center gap-2">
         <span className="text-xs text-gray-500 ml-2">{src.label}</span>
         
@@ -220,11 +210,11 @@ export default function AgentInsights({
               </div>
               <div className="grid grid-cols-2 gap-3 text-center">
                 <div>
-                  <p className="text-lg font-bold text-cisco-blue">{data.performanceMetrics.accuracy}%</p>
+                  <p className="text-lg font-bold text-cisco-blue">{(((data as any).followUp?.isNew ? (data as any).followUp.performanceMetrics : data.performanceMetrics) || {accuracy: 0}).accuracy}%</p>
                   <p className="text-xs text-gray-500">Accuracy</p>
                 </div>
                 <div>
-                  <p className="text-lg font-bold text-cisco-blue">{data.performanceMetrics.responseTime}</p>
+                  <p className="text-lg font-bold text-cisco-blue">{(((data as any).followUp?.isNew ? (data as any).followUp.performanceMetrics : data.performanceMetrics) || {responseTime: '0s'}).responseTime}</p>
                   <p className="text-xs text-gray-500">Response Time</p>
                 </div>
               </div>

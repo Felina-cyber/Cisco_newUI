@@ -136,19 +136,21 @@ export default function Page() {
       // surface the follow-up question after 3 seconds (only if follow-up hasn't been shown yet)
       const currentCaseId = current?.id;
       if (currentCaseId === '287423' && !(current as any)?.followUp?.isNew) {
-        // This is the first query being sent, mark follow-up as new
-        setUpdatedCases((prev) => {
-          const existing = prev[currentCaseId!] || cases.find((c) => c.id === currentCaseId);
-          if (!existing) return prev;
-          const clone: any = { ...existing };
-          if (clone.followUp) {
-            clone.followUp = { ...clone.followUp, isNew: true };
-          }
-          return { ...prev, [currentCaseId!]: clone } as Record<string, SellerCase>;
-        });
-
-        // restart the timeline from seller-query to append the follow-up
+        // This is the first query being sent. After the 'sent' state is rendered,
+        // wait 3 seconds then trigger the follow-up flow.
         setTimeout(() => {
+          // mark follow-up as new so components can react
+          setUpdatedCases((prev) => {
+            const existing = prev[currentCaseId!] || cases.find((c) => c.id === currentCaseId);
+            if (!existing) return prev;
+            const clone: any = { ...existing };
+            if (clone.followUp) {
+              clone.followUp = { ...clone.followUp, isNew: true };
+            }
+            return { ...prev, [currentCaseId!]: clone } as Record<string, SellerCase>;
+          });
+
+          // restart the timeline from seller-query to append the follow-up
           setActiveTimelineCase(currentCaseId!);
           setTimelineStep('seller-query');
           setResponseShown(false);
