@@ -82,7 +82,7 @@ export default function Worklist({
   const isCaseResolved = (caseId: string) => resolvedCases?.has(caseId) || false;
 
   return (
-    <aside className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-lg border border-gray-100 h-[calc(100vh-8rem)] flex flex-col">
+    <aside className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-lg border border-gray-100 h-[calc(100vh-9rem)] flex flex-col">
       {/* Header */}
       <div className="bg-gradient-to-r from-cisco-navy to-cisco-blue rounded-t-2xl px-6 py-4 shadow-md flex-shrink-0">
         <div className="flex items-center justify-between mb-3">

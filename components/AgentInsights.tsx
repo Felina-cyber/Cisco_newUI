@@ -41,7 +41,7 @@ export default function AgentInsights({
   );
 
   return (
-    <aside className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-xl border border-gray-100 h-[calc(100vh-8rem)] flex flex-col">
+    <aside className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-xl border border-gray-100 h-[calc(100vh-9rem)] flex flex-col">
       {/* Header */}
       <div className="bg-gradient-to-r from-cisco-navy to-cisco-blue rounded-t-2xl px-6 py-4 shadow-md flex-shrink-0">
         <h2 className="text-lg font-semibold text-white tracking-tight">

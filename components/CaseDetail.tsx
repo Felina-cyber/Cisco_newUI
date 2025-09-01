@@ -139,7 +139,7 @@ export default function CaseDetail({
   }, [data.id, data.query]);
 
   return (
-    <section className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-lg border border-gray-100 h-[calc(100vh-8rem)] overflow-hidden flex flex-col">
+    <section className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-lg border border-gray-100 h-[calc(100vh-9rem)] overflow-hidden flex flex-col">
       {/* Header */}
       <div className="bg-gradient-to-r from-cisco-navy to-cisco-blue rounded-t-2xl px-6 py-4 shadow-md">
         <div className="flex items-center justify-between">
