@@ -89,7 +89,7 @@ export default function AgentInsights({
         )}
 
         {/* Case Automation Status */}
-        {hasBeenRouted && (
+        {(hasBeenRouted || timelineStep === 'sent') && (
           <div className="rounded-2xl border border-cisco-sky bg-gradient-to-r from-cisco-sky/10 to-cisco-blue/5 shadow-sm p-5">
             <div className="flex items-center gap-2 mb-3">
               <div className="w-9 h-9 rounded-full bg-gradient-to-r from-cisco-navy to-cisco-blue flex items-center justify-center shadow-sm">
@@ -100,7 +100,7 @@ export default function AgentInsights({
               </h3>
             </div>
 
-              
+            {timelineStep === "agent-selection" && (
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
                   <p className="text-xs font-medium text-gray-500">
@@ -121,7 +121,7 @@ export default function AgentInsights({
                   </p>
                 </div>
               </div>
-            
+            )}
 
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-sm">
