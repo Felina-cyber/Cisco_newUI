@@ -82,9 +82,9 @@ export default function Worklist({
   const isCaseResolved = (caseId: string) => resolvedCases?.has(caseId) || false;
 
   return (
-    <aside className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-lg border border-gray-100 h-[calc(100vh-8rem)] overflow-auto">
+    <aside className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-lg border border-gray-100 h-[calc(100vh-8rem)] flex flex-col">
       {/* Header */}
-      <div className="bg-gradient-to-r from-cisco-navy to-cisco-blue rounded-t-2xl px-6 py-4 shadow-md">
+      <div className="bg-gradient-to-r from-cisco-navy to-cisco-blue rounded-t-2xl px-6 py-4 shadow-md flex-shrink-0">
         <div className="flex items-center justify-between mb-3">
           <h2 className="text-lg font-semibold text-white tracking-tight">Worklist</h2>
           <div className="flex items-center gap-2">
@@ -103,7 +103,7 @@ export default function Worklist({
       </div>
 
       {/* Case list */}
-      <div className="overflow-y-auto p-4 space-y-4">
+      <div className="overflow-y-auto p-4 space-y-4 flex-grow">
         {data.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-12 text-center">
             <div className="w-16 h-16 rounded-full bg-gradient-to-r from-cisco-sky/20 to-cisco-blue/20 flex items-center justify-center mb-4">

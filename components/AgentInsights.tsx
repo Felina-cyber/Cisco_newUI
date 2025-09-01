@@ -41,16 +41,16 @@ export default function AgentInsights({
   );
 
   return (
-    <aside className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-xl border border-gray-100 h-[calc(100vh-8rem)] overflow-auto">
+    <aside className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-xl border border-gray-100 h-[calc(100vh-8rem)] flex flex-col">
       {/* Header */}
-      <div className="bg-gradient-to-r from-cisco-navy to-cisco-blue rounded-t-2xl px-6 py-4 shadow-md">
+      <div className="bg-gradient-to-r from-cisco-navy to-cisco-blue rounded-t-2xl px-6 py-4 shadow-md flex-shrink-0">
         <h2 className="text-lg font-semibold text-white tracking-tight">
           AI Agent Insights
         </h2>
       </div>
 
       {/* Content */}
-      <div className="overflow-y-auto p-6 space-y-6">
+      <div className="overflow-y-auto p-6 space-y-6 flex-grow">
         {/* Timeline */}
         <div className="bg-white rounded-2xl border border-cisco-sky shadow-sm px-6 py-4 w-full">
           <InteractiveTimeline
