@@ -89,7 +89,7 @@ export default function AgentInsights({
         )}
 
         {/* Case Automation Status */}
-        {(hasBeenRouted || timelineStep === 'sent') && (
+        {hasBeenRouted && (
           <div className="rounded-2xl border border-cisco-sky bg-gradient-to-r from-cisco-sky/10 to-cisco-blue/5 shadow-sm p-5">
             <div className="flex items-center gap-2 mb-3">
               <div className="w-9 h-9 rounded-full bg-gradient-to-r from-cisco-navy to-cisco-blue flex items-center justify-center shadow-sm">
